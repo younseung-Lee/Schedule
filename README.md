@@ -9,13 +9,23 @@
 
 ### 📝 일정 관리 API
 
+
 | 기능 | 메서드 | URL | 요청 바디 | Response | 응답 (실패) |
 |------|--------|------------|------------|------------|------------|
-| **일정 생성** | `POST` | `/schedule` | `{ "todo ": string, "username": string, "password": string }` | `201 Created + { "id": Long, "todo": string, "username": string, "createtime": string, "updatetime": string }` | `400 Bad Request` |
-| **전체 일정 조회** | `GET` | `/schedule` | 없음 | `200 OK + [ { "id": Long, "todo": string, "username": string, "createtime": string, "updatetime": string } ] (없으면 [])`) | 없음 |
-| **선택 일정 조회** | `GET` | `/schedule/{id}` | 없음 | `200 OK + { "id": Long, "todo": string, "username": string, "createtime": string, "updatetime": string }` | `404 Not Found` |
-| **선택 일정 수정** | `PATCH` | `/schedule/{id}` | `200 OK + {"todo ": string,"username": string,"password": string}` | `200 OK + { "id": Long, "todo": string, "username": string, "createtime": string, "updatetime": string }` | `401 Unauthorized` | 
-| **선택 일정 삭제** | `DELETE` | `/schedules/{id}?password={password}` | 없음 | `200 OK` | `404 Not Found` |
+| **일정 생성** | `POST` | `/schedule` | `{ "title": string, "content": string, "userId": Long, "password": string }` | `201 Created + { "id": Long, "title": string, "content": string, "userId": Long, "createdAt": string, "updatedAt": string }` | `400 Bad Request` |
+| **전체 일정 조회** | `GET` | `/schedule` | 없음 | `200 OK + [ { "id": Long, "title": string, "content": string, "userId": Long, "createdAt": string, "updatedAt": string } ] (없으면 [])` | 없음 |
+| **선택 일정 조회** | `GET` | `/schedule/{id}` | 없음 | `200 OK + { "id": Long, "title": string, "content": string, "userId": Long, "createdAt": string, "updatedAt": string }` | `404 Not Found` |
+| **선택 일정 수정** | `PATCH` | `/schedule/{id}` | `{ "title": string, "content": string, "userId": Long, "password": string }` | `200 OK + { "id": Long, "title": string, "content": string, "userId": Long, "createdAt": string, "updatedAt": string }` | `401 Unauthorized` |
+| **선택 일정 삭제** | `DELETE` | `/schedule/{id}` | `{ "password": string }` | `200 OK` | `404 Not Found` |
+
+| 기능 | 메서드 | URL | 요청 바디 | Response | 응답 (실패) |
+|------|--------|------------|------------|------------|------------|
+| **유저 생성** | `POST` | `/users` | `{ "username": string, "email": string, "password": string }` | `201 Created + { "id": Long, "username": string, "email": string, "createdAt": string, "updatedAt": string }` | `400 Bad Request` |
+| **전체 유저 조회** | `GET` | `/users` | 없음 | `200 OK + [ { "id": Long, "username": string, "email": string, "createdAt": string, "updatedAt": string } ]` | 없음 |
+| **선택 유저 조회** | `GET` | `/users/{id}` | 없음 | `200 OK + { "id": Long, "username": string, "email": string, "createdAt": string, "updatedAt": string }` | `404 Not Found` |
+| **선택 유저 수정** | `PATCH` | `/users/{id}` | `{ "username": string, "email": string, "password": string }` | `200 OK + { "id": Long, "username": string, "email": string, "createdAt": string, "updatedAt": string }` | `401 Unauthorized` |
+| **선택 유저 삭제** | `DELETE` | `/users/{id}` | `{ "password": string }` | `200 OK` | `404 Not Found` |
+
 
 ### 📝 ERD
 ![Image](https://github.com/user-attachments/assets/4a5ac365-29cd-4904-b87b-2b9a616223e8)
