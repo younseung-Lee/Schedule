@@ -9,7 +9,7 @@
 
 ### 📝 일정 관리 API
 
-
+일정 테이블
 | 기능 | 메서드 | URL | 요청 바디 | Response | 응답 (실패) |
 |------|--------|------------|------------|------------|------------|
 | **일정 생성** | `POST` | `/schedule` | `{ "title": string, "content": string, "userId": Long,  "password": string }` | `201 Created + { "id": Long,  "title": string,  "content": string,  "userId": Long,  "createdAt": string,  "updatedAt": string }` | `400 Bad Request` |
@@ -18,6 +18,7 @@
 | **선택 일정 수정** | `PATCH` | `/schedule/{id}` | `{ "title": string, "content": string, "userId": Long,  "password": string }` | `200 OK + { "id": Long, "title": string, "content": string, "userId": Long, "createdAt": string, "updatedAt": string }` | `401 Unauthorized` |
 | **선택 일정 삭제** | `DELETE` | `/schedule/{id}` | `{ "password": string }` | `200 OK` | `404 Not Found` |
 
+유저 테이블
 | 기능 | 메서드 | URL | 요청 바디 | Response | 응답 (실패) |
 |------|--------|------------|------------|------------|------------|
 | **유저 생성** | `POST` | `/users` | `{ "username": string, "email": string, "password": string }` | `201 Created + { "id": Long, "username": string, "email": string, "createdAt": string, "updatedAt": string }` | `400 Bad Request` |
