@@ -1,0 +1,17 @@
+package org.example.schedule.repository;
+
+import org.example.schedule.entity.ScheduleEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.server.ResponseStatusException;
+
+
+
+public interface ScheduleRepository extends JpaRepository<ScheduleEntity, Long> {
+    default ScheduleEntity findByIdOrElseThrow(Long id) {
+        return findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Does not exist id = " + id));
+    }
+}
+
