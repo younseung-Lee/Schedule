@@ -12,7 +12,7 @@
 
 | 기능 | 메서드 | URL | 요청 바디 | Response | 응답 (실패) |
 |------|--------|------------|------------|------------|------------|
-| **일정 생성** | `POST` | `/schedule` | `{ "title": string, "content": string, "userId": Long, "password": string }` | `201 Created + { "id": Long, "title": string, "content": string, "userId": Long, "createdAt": string, "updatedAt": string }` | `400 Bad Request` |
+| **일정 생성** | `POST` | `/schedule` | `{ "title": string, "content": string, "userId": Long,  "password": string }` | `201 Created + { "id": Long, "title": string, "content": string, "userId": Long, "createdAt": string, "updatedAt": string }` | `400 Bad Request` |
 | **전체 일정 조회** | `GET` | `/schedule` | 없음 | `200 OK + [ { "id": Long, "title": string, "content": string, "userId": Long, "createdAt": string, "updatedAt": string } ] (없으면 [])` | 없음 |
 | **선택 일정 조회** | `GET` | `/schedule/{id}` | 없음 | `200 OK + { "id": Long, "title": string, "content": string, "userId": Long, "createdAt": string, "updatedAt": string }` | `404 Not Found` |
 | **선택 일정 수정** | `PATCH` | `/schedule/{id}` | `{ "title": string, "content": string, "userId": Long, "password": string }` | `200 OK + { "id": Long, "title": string, "content": string, "userId": Long, "createdAt": string, "updatedAt": string }` | `401 Unauthorized` |
