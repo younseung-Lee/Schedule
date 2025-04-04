@@ -39,7 +39,12 @@
 
 
 ### 📝 ERD
-![Image](https://github.com/user-attachments/assets/4a5ac365-29cd-4904-b87b-2b9a616223e8)
+![Image](https://github.com/user-attachments/assets/ac96ebb4-f6e8-45b4-8f01-012a8533ec6c)
+
+User (1) <-----> Schedule (N)
+→ 하나의 유저는 여러 개의 일정을 가질 수 있습니다 (1:N 관계).
+
+Schedule.user_id는 User.id를 참조하는 외래키(Foreign Key)입니다
 
 ### 📝 테이블 생성에 필요한 query
 ```js
