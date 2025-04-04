@@ -2,12 +2,13 @@
 
 일정(캘린더)을 관리할 수 있는 RESTful API입니다.  
 일정을 생성, 조회, 수정, 삭제할 수 있습니다.
+유저를 생성, 조회, 수정, 삭제할 수 있습니다(로그인 인증). 
 
 ---
 
 ## 📌 API 명세서
 
-### 기술 스택 및 키워드
+### 🧰 기술 스택 및 키워드
 - Java 17, Spring Boot
 - JPA + Spring Data JPA
 - JPA Auditing
