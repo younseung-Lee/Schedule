@@ -51,8 +51,9 @@ public class ScheduleService {
         );
     }
 
-    public List<ScheduleResponseDto> findAll() {
-        return scheduleRepository.findAll().stream().map(ScheduleResponseDto::toDto).toList();
+    public List<ScheduleResponseDto> findAllByUser(Long userId) {
+        List<ScheduleEntity> schedules = scheduleRepository.findAllByUserId(userId);
+        return schedules.stream().map(ScheduleResponseDto::toDto).toList();
     }
 
 

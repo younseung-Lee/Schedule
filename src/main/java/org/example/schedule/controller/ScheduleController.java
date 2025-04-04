@@ -1,7 +1,9 @@
 package org.example.schedule.controller;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.example.schedule.dto.*;
+import org.example.schedule.entity.UserEntity;
 import org.example.schedule.service.ScheduleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,9 +25,15 @@ public class ScheduleController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ScheduleResponseDto>> findAll(){
-        List<ScheduleResponseDto> scheduleResponseDtoList = scheduleService.findAll();
-        return new ResponseEntity<>(scheduleResponseDtoList,HttpStatus.OK);
+    public ResponseEntity<List<ScheduleResponseDto>> findAll(HttpSession session){
+        UserEntity user = (UserEntity) session.getAttribute("user");
+
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+        List<ScheduleResponseDto> scheduleResponseDtoList = scheduleService.findAllByUser(user.getId());
+        return new ResponseEntity<>(scheduleResponseDtoList, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

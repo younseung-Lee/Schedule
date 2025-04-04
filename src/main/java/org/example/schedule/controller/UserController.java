@@ -17,7 +17,7 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
-   // 유저 생성
+
     @PostMapping
     public ResponseEntity<CreateUserResponseDto> saveUser(@RequestBody CreateUserRequestDto requestDto){
         CreateUserResponseDto createUserResponseDto =
@@ -28,7 +28,7 @@ public class UserController {
                 );
         return new ResponseEntity<>(createUserResponseDto, HttpStatus.CREATED);
     }
-    // 로그인
+
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDto> login(
             @RequestBody LoginRequestDto requestDto,
