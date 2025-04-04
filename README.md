@@ -75,8 +75,8 @@ CREATE TABLE schedule (
   - 작성 유저 (유저 ID로 연관관계 설정)
   - 할일 제목
   - 할일 내용
-  - 작성일 (`@CreatedDate`)
-  - 수정일 (`@LastModifiedDate`)
+  - 작성일 
+  - 수정일
 - 작성일, 수정일은 **JPA Auditing**을 통해 자동 관리됩니다.
 
 ---
@@ -87,8 +87,8 @@ CREATE TABLE schedule (
 - 유저는 다음과 같은 필드를 가집니다:
   - 유저명
   - 이메일
-  - 작성일 (`@CreatedDate`)
-  - 수정일 (`@LastModifiedDate`)
+  - 작성일 
+  - 수정일 
 - **일정 엔티티와 유저 엔티티는 연관관계**를 갖습니다. (작성자 필드는 유저 ID로 대체)
 
 ---
@@ -105,8 +105,8 @@ CREATE TABLE schedule (
 - 이메일과 비밀번호를 이용한 **로그인 기능**을 제공합니다.
 - **Session 기반 인증**을 사용합니다.
 - 인증 처리는 **Servlet Filter**를 통해 구현되며, 다음 경로는 필터에서 제외됩니다:
-  - 회원가입(`/api/signup`)
-  - 로그인(`/api/login`)
+  - 유저 생성(/users)
+  - 로그인(/users/login)
 - 로그인 성공 시 쿠키와 세션을 활용해 인증 상태를 유지합니다.
 
 ---
