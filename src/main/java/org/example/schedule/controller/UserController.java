@@ -1,5 +1,7 @@
 package org.example.schedule.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.example.schedule.dto.*;
 import org.example.schedule.service.UserService;
@@ -26,6 +28,23 @@ public class UserController {
                 );
         return new ResponseEntity<>(createUserResponseDto, HttpStatus.CREATED);
     }
+    // 로그인
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponseDto> login(
+            @RequestBody LoginRequestDto requestDto,
+            HttpServletRequest request
+    ) {
+        userService.login(requestDto, request);
+        return ResponseEntity.ok(new LoginResponseDto("로그인 성공"));
+    }
+
+    // 로그아웃
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(HttpServletRequest request) {
+        userService.logout(request);
+        return ResponseEntity.ok("로그아웃 성공");
+    }
+
 
     // 전체 유저 조회
     @GetMapping

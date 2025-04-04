@@ -1,11 +1,10 @@
 package org.example.schedule.service;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.example.schedule.dto.CreateUserResponseDto;
-import org.example.schedule.dto.UpdateUserRequestDto;
-import org.example.schedule.dto.UpdateUserResponseDto;
-import org.example.schedule.dto.UserResponseDto;
+import org.example.schedule.dto.*;
 import org.example.schedule.entity.UserEntity;
 import org.example.schedule.repository.UserRepository;
 import org.springframework.http.HttpStatus;
@@ -74,5 +73,26 @@ public class UserService {
         UserEntity user = userRepository.findByIdOrElseThrow(id);
         userRepository.delete(user);
 
+    }
+
+    @Transactional
+    public void login(LoginRequestDto requestDto, HttpServletRequest request) {
+        UserEntity user = userRepository.findByEmail(requestDto.getEmail())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "이메일 또는 비밀번호가 일치하지 않습니다."));
+
+        if (!user.getPassword().equals(requestDto.getPassword())) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "이메일 또는 비밀번호가 일치하지 않습니다.");
+        }
+
+        HttpSession session = request.getSession();
+        session.setAttribute("user", user);
+    }
+
+    // 로그아웃
+    public void logout(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate(); // 세션 삭제 (로그아웃)
+        }
     }
 }
