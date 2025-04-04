@@ -88,11 +88,15 @@ public class UserService {
         session.setAttribute("user", user);
     }
 
-    // 로그아웃
+
+    /**
+     * 로그아웃
+     * @session.invalidate(); : 세션 삭제 (로그아웃)
+     * */
     public void logout(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {
-            session.invalidate(); // 세션 삭제 (로그아웃)
+            session.invalidate();
         }
     }
 }
