@@ -22,12 +22,12 @@
 유저 테이블
 | 기능 | 메서드 | URL | 요청 바디 | Response | 응답 (실패) |
 |------|--------|------------|------------|------------|------------|
-| **유저 생성** | `POST` | `/users` | `{ "username": string, "email": string, "password": string }` | `201 Created + { "id": Long, "username": string, "email": string, "createdAt": string, "updatedAt": string }` | `400 Bad Request` |
+| **유저 생성** | `POST` | `/users` | `{ "username": string,"email": string,"password": string }` | `201 Created + { "id": Long,"username": string,"email": string,"createdAt": string,"updatedAt": string }` | `400 Bad Request` |
 | **로그인** | `POST` | `/users/login` | `{ "usernaem":string, password": string }` | `200 OK` + {"message": "로그인 성공"} | `401 Unauthorized` + `{"timestamp": "2025-04-04T11:01:09.1456905","status": 401,"error": "이메일 또는 비밀번호가 일치하지 않습니다.","code": "C002", "message": "이메일 또는 비밀번호가 일치하지 않습니다.", "path": "/users/login"}` |
 | **로그아웃** | `POST` | `/users/logout` | 없음 | `200 OK` + {"message": "로그아웃 성공"} | `401 Unauthorized` |
-| **전체 유저 조회** | `GET` | `/users` | 없음 | `200 OK + [ { "id": Long, "username": string, "email": string, "createdAt": string, "updatedAt": string } ]` | 없음 |
-| **선택 유저 조회** | `GET` | `/users/{id}` | 없음 | `200 OK + { "id": Long, "username": string, "email": string, "createdAt": string, "updatedAt": string }` | `404 Not Found` |
-| **선택 유저 수정** | `PATCH` | `/users/{id}` | `{ "username": string, "email": string, "password": string }` | `200 OK + { "id": Long, "username": string, "email": string, "createdAt": string, "updatedAt": string }` | `401 Unauthorized` |
+| **전체 유저 조회** | `GET` | `/users` | 없음 | `200 OK + [ { "id": Long,"username": string,"email": string,"createdAt": string,"updatedAt": string } ]` | 없음 |
+| **선택 유저 조회** | `GET` | `/users/{id}` | 없음 | `200 OK + { "id": Long,"username": string,"email": string,"createdAt": string,"updatedAt": string }` | `404 Not Found` |
+| **선택 유저 수정** | `PATCH` | `/users/{id}` | `{ "username": string,"email": string,"password": string }` | `200 OK + { "id": Long,"username": string,"email": string,"createdAt": string,"updatedAt": string }` | `401 Unauthorized` |
 | **선택 유저 삭제** | `DELETE` | `/users/{id}` | `{ "password": string }` | `200 OK` | `404 Not Found` |
 
 
