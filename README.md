@@ -8,14 +8,6 @@
 
 ## 📌 API 명세서
 
-### 🧰 기술 스택 및 키워드
-- Java 17, Spring Boot
-- JPA + Spring Data JPA
-- JPA Auditing
-- Spring MVC (Controller, Service, Repository 구조)
-- Servlet Filter
-- Session / Cookie 인증 처리
-
 ### 📝 일정 관리 API
 
 일정 테이블
@@ -120,7 +112,15 @@ CREATE TABLE schedule (
 
 ---
 
-### 🚫 예외 처리
+## 🧰 기술 스택 및 키워드
+- Java 17, Spring Boot
+- JPA + Spring Data JPA
+- JPA Auditing
+- Spring MVC (Controller, Service, Repository 구조)
+- Servlet Filter
+- Session / Cookie 인증 처리
+
+## 🚫 예외 처리
 
 - 로그인 실패 시 (이메일/비밀번호 불일치 등) **HTTP 401 (Unauthorized)** 반환
 - 예외 응답 형식 예시:
